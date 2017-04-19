@@ -1,16 +1,16 @@
 package main
 
 import (
-"flag"
-"net/http"
-"runtime"
-"strconv"
-"time"
-"os"
-"log"
-"bufio"
-"fmt"
-"strings"
+	"bufio"
+	"flag"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"runtime"
+	"strconv"
+	"strings"
+	"time"
 )
 
 var url *string
@@ -44,7 +44,7 @@ func main() {
 				continue
 			}
 
-			songInfo[partTime] =  strings.Replace( strings.TrimSpace(strings.TrimSpace(lyricParts[0])), " " , "_", -1)
+			songInfo[partTime] = strings.Replace(strings.TrimSpace(strings.TrimSpace(lyricParts[0])), " ", "_", -1)
 			last = partTime
 
 		}
@@ -84,16 +84,16 @@ func main() {
 
 		lastLyric = lyric
 		if !strings.EqualFold(lastLyric, "+") {
-			fmt.Println( currentTick, " | ", lastLyric )
-			go doLyric( lastLyric )
+			fmt.Println(currentTick, " | ", lastLyric)
+			go doLyric(lastLyric)
 		} else {
-			fmt.Println( currentTick, " | ~~PAUSE~~" )
+			fmt.Println(currentTick, " | ~~PAUSE~~")
 		}
 
 	}
 
 }
 
-func doLyric( lyric string ) {
+func doLyric(lyric string) {
 	http.Get(*url + lyric)
 }
