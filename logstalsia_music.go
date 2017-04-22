@@ -64,7 +64,7 @@ func main() {
 
 	for i := 0; i < 100; i++ {
 		time.Sleep(duration)
-		go doLyric("CORI_SYNC")
+		go doLyric("MIKGREG_TEST_123")
 	}
 
 	var lastLyric string = "+"
